@@ -1,0 +1,10 @@
+version: 1.0.{build}
+skip_tags: true
+configuration: Release
+before_build:
+  - nuget restore ".\MatematicaFinanceira.sln"
+platform: Any CPU
+build:
+  project: .\MatematicaFinanceira.sln
+  verbosity: minimal
+  
