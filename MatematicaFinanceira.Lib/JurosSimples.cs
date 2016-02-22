@@ -2,7 +2,7 @@ using System;
 
 namespace MatematicaFinanceira.Lib
 {
-    public class JurosSimples
+    public static class JurosSimples
     {
         public static decimal CalcularJuros(decimal capitalInicial, decimal taxaDeJuros, int prazo)
         {
