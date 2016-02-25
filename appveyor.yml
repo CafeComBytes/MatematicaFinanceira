@@ -7,4 +7,11 @@ platform: Any CPU
 build:
   project: .\MatematicaFinanceira.sln
   verbosity: minimal
-  
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: nzGiURf/jnYaiOkiJjLXpQfG65boyslHtARiCkUXuFoK0Fe9invgM9LkJrm8OMNd
+test_script:
+- ps: >-
+  .\packages\OpenCover.4.6.*\tools\OpenCover.Console.exe -register:user -target:nunit-console.exe -register:user "-targetargs:""MatematicaFinanceira.Testes\bin\$env:CONFIGURATION\MatematicaFinanceira.Testes.dll"" /noshadow" -filter:"+[MatematicaFinanceira*]*" -filter:"-[MatematicaFinanceira.Testes]*" -output:opencoverCoverage.xml
+  $coveralls = (Resolve-Path "packages/coveralls.io.*/tools/coveralls.net.exe").ToString()
+  & $coveralls --opencover opencoverCoverage.xml --full-sources
