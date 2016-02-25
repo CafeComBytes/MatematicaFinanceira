@@ -12,7 +12,7 @@ environment:
     secure: nzGiURf/jnYaiOkiJjLXpQfG65boyslHtARiCkUXuFoK0Fe9invgM9LkJrm8OMNd
 test_script:
 - ps: >-
-    .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:nunit3-console.exe -register:user "-targetargs:""MatematicaFinanceira.Testes\bin\$env:CONFIGURATION\MatematicaFinanceira.Testes.dll"" /noshadow" -filter:"+[MatematicaFinanceira*]*" -filter:"-[MatematicaFinanceira.Testes]*" -output:opencoverCoverage.xml
+    .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:nunit3-console.exe -register:user "-targetargs:""MatematicaFinanceira.Testes\bin\$env:CONFIGURATION\MatematicaFinanceira.Testes.dll""" -filter:"+[MatematicaFinanceira*]*" -filter:"-[MatematicaFinanceira.Testes]*" -output:opencoverCoverage.xml
 
     $coveralls = (Resolve-Path "packages/coveralls.io.*/tools/coveralls.net.exe").ToString()
 
