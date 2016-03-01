@@ -51,7 +51,7 @@ namespace MatematicaFinanceira.Testes
             var taxaDeJuros = 0.2m;
 
             var prazo = JurosCompostos.CalcularPrazo(capitalInicial, montante, taxaDeJuros);
-            
+
             prazo.Should().Equal(3);
         }
 

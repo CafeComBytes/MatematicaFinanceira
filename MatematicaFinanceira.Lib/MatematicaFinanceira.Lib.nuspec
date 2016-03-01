@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/CafeComBytes/MatematicaFinanceira</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>
+      Suporte para cálculos de juros simples e compostos.
+    </releaseNotes>
+    <copyright>Café com Bytes</copyright>
+    <tags>matematica financeira juros simples compostos</tags>
+  </metadata>
+</package>
