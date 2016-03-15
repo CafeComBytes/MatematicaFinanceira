@@ -24,6 +24,8 @@ namespace MatematicaFinanceira.Testes
 
             Assert.IsTrue(parcela1 != parcela2);
             Assert.IsFalse(parcela2.Equals(parcela1));
+            Assert.IsFalse(parcela2.Equals(null));
+            Assert.IsFalse(parcela2.Equals(1));
         }
 
         [Test]
@@ -33,5 +35,16 @@ namespace MatematicaFinanceira.Testes
 
             Assert.AreEqual(parcela.Juros + parcela.Amortizacao, parcela.Prestacao);
         }
+
+        [Test]
+        public void Prestacao_deve_gerar_hashcode_unico_por_parcela()
+        {
+            var parcela = new Parcela(juros: 10, amortizacao: 15, saldoDevedor: 200);
+
+            var hashCode = string.Format("{0}_{1}_{2}", parcela.Juros, parcela.Amortizacao, parcela.SaldoDevedor).GetHashCode();
+
+            Assert.AreEqual(hashCode, parcela.GetHashCode());
+        }
+        
     }
 }

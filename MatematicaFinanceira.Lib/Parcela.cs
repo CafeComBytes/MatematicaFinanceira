@@ -43,7 +43,7 @@ namespace MatematicaFinanceira.Lib
         
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return string.Format("{0}_{1}_{2}", Juros, Amortizacao, SaldoDevedor).GetHashCode();
         }
     }
 }
