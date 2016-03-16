@@ -43,11 +43,13 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JurosCompostosTestes.cs" />
-    <Compile Include="JurosSimplesTestes.cs" />
-    <Compile Include="ParcelaTestes.cs" />
+    <Compile Include="Juros\JurosCompostosTestes.cs" />
+    <Compile Include="Juros\JurosSimplesTestes.cs" />
+    <Compile Include="SistemasDeAmortizacao\ParcelaTestes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SistemaDeAmortizacaoConstanteTestes.cs" />
+    <Compile Include="SistemasDeAmortizacao\SistemaDeAmortizacaoConstanteTestes.cs" />
+    <Compile Include="SistemasDeAmortizacao\SistemaDeAmortizacaoPriceTestes.cs" />
+    <Compile Include="TestesDeArredondamento.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -61,6 +63,7 @@
       <Name>MatematicaFinanceira.Lib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

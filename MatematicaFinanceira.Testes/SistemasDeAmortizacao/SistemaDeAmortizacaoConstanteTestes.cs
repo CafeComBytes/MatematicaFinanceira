@@ -8,32 +8,6 @@ namespace MatematicaFinanceira.Testes
     public class SistemaDeAmortizacaoConstanteTestes
     {
         [Test]
-        public void Deve_calcular_parcela_zero()
-        {
-            const decimal saldoDevedor = 150000;
-            var parcelaEsperada = new Parcela(juros: 0, amortizacao: 0, saldoDevedor: saldoDevedor);
-
-            var parcelaZero = SistemaDeAmortizacaoConstante.CalcularParcelas(saldoDevedor, taxaDeJuros: 0, prazo: 1)[0];
-
-            Assert.AreEqual(parcelaEsperada, parcelaZero);
-        }
-
-        [Test]
-        public void Deve_calcular_primeira_parcela()
-        {
-            const decimal saldoDevedor = 300000;
-            const int prazo = 5;
-            const decimal taxaDeJuros = 0.04m;
-            const decimal amortizacao = saldoDevedor / prazo;
-            var juros = JurosCompostos.CalcularJuros(saldoDevedor, taxaDeJuros, 1);
-            var primeiraParcelaEsperada = new Parcela(juros, amortizacao, saldoDevedor - amortizacao);
-
-            var primeiraParcela = SistemaDeAmortizacaoConstante.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo)[1];
-            
-            Assert.AreEqual(primeiraParcelaEsperada, primeiraParcela);
-        }
-
-        [Test]
         public void Deve_gerar_todas_as_parcelas()
         {
             const decimal saldoDevedor = 300000;
