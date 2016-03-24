@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MatematicaFinanceira.Lib;
 using NUnit.Framework;
 
@@ -10,18 +11,24 @@ namespace MatematicaFinanceira.Testes
         [Test]
         public void Deve_gerar_todas_as_parcelas()
         {
-            const decimal saldoDevedor = 300000;
+            const decimal saldoDevedor = 10000m;
             const int prazo = 5;
-            const decimal taxaDeJuros = 0.04m;
-            var parcelasEsperadas = new[]
+            const decimal taxaDeJuros = 0.4m;
+            const decimal amortizacao = saldoDevedor / prazo;
+            var parcelasEsperadas = new List<Parcela>();
+
+            prazo.Vezes(numeroDaParcela =>
             {
-                new Parcela(juros:0, amortizacao:0, saldoDevedor:300000), 
-                new Parcela(juros:12000, amortizacao:60000, saldoDevedor:240000), 
-                new Parcela(juros:9600, amortizacao:60000, saldoDevedor:180000), 
-                new Parcela(juros:7200, amortizacao:60000, saldoDevedor:120000), 
-                new Parcela(juros:4800, amortizacao:60000, saldoDevedor:60000), 
-                new Parcela(juros:2400, amortizacao:60000, saldoDevedor:0), 
-            };
+                if (!parcelasEsperadas.Any())
+                    parcelasEsperadas.Add(new Parcela(0, 0, saldoDevedor));
+
+                var saldoDevedorDaParcelaPassada = saldoDevedor - (numeroDaParcela * amortizacao);
+                var saldoDevedorDaParcela = saldoDevedor - ((numeroDaParcela + 1) * amortizacao);
+                var juros = JurosCompostos.CalcularJuros(saldoDevedorDaParcelaPassada, taxaDeJuros, 1);
+                var parcela = new Parcela(juros, amortizacao, saldoDevedorDaParcela);
+                
+                parcelasEsperadas.Add(parcela);
+            });
 
             var parcelas = SistemaDeAmortizacaoConstante.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo);
 

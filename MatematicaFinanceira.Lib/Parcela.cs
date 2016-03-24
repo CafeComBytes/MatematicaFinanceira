@@ -40,7 +40,12 @@ namespace MatematicaFinanceira.Lib
         {
             return !(esquerda == direita);
         }
-        
+
+        public override string ToString()
+        {
+            return string.Format("<Parcela - J:{{{0}}}, A:{{{1}}}, SD:{{{2}}}>", Juros, Amortizacao, SaldoDevedor);
+        }
+
         public override int GetHashCode()
         {
             return string.Format("{0}_{1}_{2}", Juros, Amortizacao, SaldoDevedor).GetHashCode();

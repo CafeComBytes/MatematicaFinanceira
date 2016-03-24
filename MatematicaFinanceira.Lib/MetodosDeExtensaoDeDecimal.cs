@@ -13,5 +13,11 @@ namespace MatematicaFinanceira.Lib
         {
             return decimal.Round(numero, casasDecimais);
         }
+
+        public static void Vezes(this int numeroDeVezes, Action<int> metodo)
+        {
+            for (var i = 0; i < numeroDeVezes; i++)
+                metodo.Invoke(i);
+        }
     }
 }
