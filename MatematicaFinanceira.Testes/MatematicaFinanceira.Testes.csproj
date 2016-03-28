@@ -48,8 +48,9 @@
     <Compile Include="SistemasDeAmortizacao\ParcelaTestes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SistemasDeAmortizacao\SistemaDeAmortizacaoConstanteTestes.cs" />
+    <Compile Include="SistemasDeAmortizacao\SistemaDeAmortizacaoMistaTestes.cs" />
     <Compile Include="SistemasDeAmortizacao\SistemaDeAmortizacaoPriceTestes.cs" />
-    <Compile Include="TestesDeArredondamento.cs" />
+    <Compile Include="Arrendondamento\ArredondamentoTestes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

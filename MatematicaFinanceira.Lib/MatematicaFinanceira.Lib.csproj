@@ -41,6 +41,7 @@
     <Compile Include="Parcela.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SistemaDeAmortizacaoConstante.cs" />
+    <Compile Include="SistemaDeAmortizacaoMista.cs" />
     <Compile Include="SistemaDeAmortizacaoPrice.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

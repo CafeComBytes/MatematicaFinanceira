@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace MatematicaFinanceira.Testes
 {
     [TestFixture]
-    public class TestesDeArredondamento
+    public class ArredondamentoTestes
     {
         [Test]
         public void Nao_deve_arredondar_digito_inferior_5()

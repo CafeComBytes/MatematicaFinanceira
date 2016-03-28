@@ -16,8 +16,7 @@ namespace MatematicaFinanceira.Testes
             const decimal taxaDeJuros = 0.4m;
             const decimal amortizacao = saldoDevedor / prazo;
             var parcelasEsperadas = new List<Parcela>();
-
-            prazo.Vezes(numeroDaParcela =>
+            prazo.ParaCadaFaca(numeroDaParcela =>
             {
                 if (!parcelasEsperadas.Any())
                     parcelasEsperadas.Add(new Parcela(0, 0, saldoDevedor));
