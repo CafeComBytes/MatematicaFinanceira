@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MatematicaFinanceira.Lib")]
-[assembly: AssemblyDescription("Suporte para cálculos financeiros")]
+[assembly: AssemblyDescription("Biblioteca para cálculos financeiros")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Café com Bytes")]
 [assembly: AssemblyProduct("MatematicaFinanceira.Lib")]
@@ -32,4 +32,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.1")]
+[assembly: AssemblyVersion("0.2")]

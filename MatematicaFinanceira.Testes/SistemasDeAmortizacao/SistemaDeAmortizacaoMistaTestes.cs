@@ -23,7 +23,7 @@ namespace MatematicaFinanceira.Testes
                 new Parcela(2495.93m, 62398.14m, 0),
             };
 
-            var parcelas = SistemaDeAmortizacaoMista.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo);
+            var parcelas = SistemaDeAmortizacaoMisto.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo);
 
             CollectionAssert.AreEqual(parcelasEsperadas, parcelas);
         }

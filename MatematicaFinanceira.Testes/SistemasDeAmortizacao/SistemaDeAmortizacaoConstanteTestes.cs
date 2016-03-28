@@ -30,7 +30,7 @@ namespace MatematicaFinanceira.Testes
             });
 
             var parcelas = SistemaDeAmortizacaoConstante.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo);
-
+            
             CollectionAssert.AreEqual(parcelasEsperadas, parcelas);
         }
     }

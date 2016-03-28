@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MatematicaFinanceira.Lib
 {
@@ -7,7 +6,7 @@ namespace MatematicaFinanceira.Lib
     {
         public static IReadOnlyList<Parcela> CalcularParcelas(decimal saldoDevedor, decimal taxaDeJuros, int prazo)
         {
-            var parcelas = new List<Parcela>()
+            var parcelas = new List<Parcela>
             {
                 new Parcela(juros: 0, amortizacao: 0, saldoDevedor: saldoDevedor)
             };

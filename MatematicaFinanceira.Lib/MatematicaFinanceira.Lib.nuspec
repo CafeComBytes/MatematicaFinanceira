@@ -10,9 +10,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-      Suporte para cálculos de juros simples e compostos.
+      Suporte para cálculo de parcelas dos sistemas de amortização price, constante e misto
     </releaseNotes>
     <copyright>Café com Bytes</copyright>
-    <tags>matematica financeira juros simples compostos</tags>
+    <tags>matematica financeira juros simples compostos sistemas de amortização price constante misto</tags>
   </metadata>
 </package>

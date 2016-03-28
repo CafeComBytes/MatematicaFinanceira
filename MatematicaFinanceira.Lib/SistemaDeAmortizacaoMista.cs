@@ -2,7 +2,7 @@
 
 namespace MatematicaFinanceira.Lib
 {
-    public class SistemaDeAmortizacaoMista
+    public class SistemaDeAmortizacaoMisto
     {
         public static IReadOnlyList<Parcela> CalcularParcelas(decimal saldoDevedor, decimal taxaDeJuros, int prazo)
         {
