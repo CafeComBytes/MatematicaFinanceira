@@ -15,11 +15,11 @@ namespace MatematicaFinanceira.Lib
             var coeficienteK = (taxaDeJuros * (1 + taxaDeJuros).ElevadoPor(prazo)) / ((1 + taxaDeJuros).ElevadoPor(prazo) - 1);
             var prestacaoAtravesDoPrazo = coeficienteK * saldoDevedor;
 
-            while (saldoDevedorAtual != 0)
+            for (var numeroDaParcela = 0; numeroDaParcela < prazo; numeroDaParcela++)
             {
                 var juros = JurosCompostos.CalcularJuros(saldoDevedorAtual, taxaDeJuros, 1);
                 var amortizacao = prestacaoAtravesDoPrazo - juros;
-                saldoDevedorAtual -= amortizacao.Arredondado(2);
+                saldoDevedorAtual -= amortizacao;
                 var parcelaAtual = new Parcela(juros.Arredondado(2), amortizacao.Arredondado(2), saldoDevedorAtual.Arredondado(2));
                 parcelas.Add(parcelaAtual);
             }

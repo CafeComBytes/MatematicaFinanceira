@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using MatematicaFinanceira.Lib;
 using NUnit.Framework;
 
@@ -46,6 +47,19 @@ namespace MatematicaFinanceira.Testes
             var primeiraParcela = SistemaDeAmortizacaoPrice.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo).Last();
 
             Assert.AreEqual(primeiraParcelaEsperada, primeiraParcela);
+        }
+
+        [Test, Description("Exceção de overflow no cálculo price #10")]
+        public void Teste_do_bug_de_overflow()
+        {
+            const decimal saldoDevedor = 10000;
+            const decimal taxaDeJuros = 0.4m;
+            const int prazo = 5;
+
+            Assert.DoesNotThrow(() => SistemaDeAmortizacaoPrice.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo));
+
+            var ultimaParcela = SistemaDeAmortizacaoPrice.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo).Last();
+            Assert.AreEqual(ultimaParcela.SaldoDevedor, 0);
         }
     }
 }
