@@ -12,11 +12,11 @@ namespace MatematicaFinanceira.Lib
 
             parcelas.Add(new Parcela(juros: 0, amortizacao: 0, saldoDevedor: saldoDevedor));
 
-            while (saldoDevedorAtual != 0)
+            for (var numeroDaParcela = 0; numeroDaParcela < prazo; numeroDaParcela++)
             {
                 var juros = JurosCompostos.CalcularJuros(saldoDevedorAtual, taxaDeJuros, prazo: 1);
                 saldoDevedorAtual -= amortizacaoAtravesDoPrazo;
-                parcelas.Add(new Parcela(juros, amortizacaoAtravesDoPrazo, saldoDevedorAtual));
+                parcelas.Add(new Parcela(juros.Arredondado(2), amortizacaoAtravesDoPrazo.Arredondado(2), saldoDevedorAtual.Arredondado(2)));
             }
 
             return parcelas;
