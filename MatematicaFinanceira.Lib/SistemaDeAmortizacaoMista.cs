@@ -17,7 +17,7 @@ namespace MatematicaFinanceira.Lib
                 var parcelaMedia = (parcelasNoSAC[indiceDaParcela].Prestacao + parcelasNoPrice[indiceDaParcela].Prestacao) / 2;
                 var juros = JurosCompostos.CalcularJuros(saldoDevedorAtual, taxaDeJuros, 1);
                 var amortizacao = parcelaMedia - juros;
-                saldoDevedorAtual -= amortizacao.Arredondado(2);
+                saldoDevedorAtual -= amortizacao;
                 var parcelaAtual = new Parcela(juros.Arredondado(2), amortizacao.Arredondado(2), saldoDevedorAtual.Arredondado(2));
                 parcelas.Add(parcelaAtual);
             }

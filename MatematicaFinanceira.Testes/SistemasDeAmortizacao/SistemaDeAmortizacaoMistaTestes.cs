@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using MatematicaFinanceira.Lib;
 using NUnit.Framework;
 
@@ -26,6 +27,18 @@ namespace MatematicaFinanceira.Testes
             var parcelas = SistemaDeAmortizacaoMisto.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo);
 
             CollectionAssert.AreEqual(parcelasEsperadas, parcelas);
+        }
+
+        [Test, Description("Sistema SAM não está zerando saldo devedor #11")]
+        public void Teste_do_bug_da_quitacao_de_saldo()
+        {
+            const decimal saldoDevedor = 10000;
+            const int prazo = 5;
+            const decimal taxaDeJuros = 0.004m;
+
+            var parcelas = SistemaDeAmortizacaoMisto.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo);
+
+            Assert.AreEqual(parcelas.Last().SaldoDevedor, 0);
         }
     }
 }
