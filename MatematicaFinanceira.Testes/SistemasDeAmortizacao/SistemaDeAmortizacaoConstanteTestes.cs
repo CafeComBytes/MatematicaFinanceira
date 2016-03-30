@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using MatematicaFinanceira.Lib;
 using NUnit.Framework;
 
@@ -40,26 +41,25 @@ namespace MatematicaFinanceira.Testes
             const decimal saldoDevedor = 100000m;
             const int prazo = 300;
             const decimal taxaDeJuros = 0.8m;
-            const decimal amortizacao = saldoDevedor / prazo;
-            var parcelasEsperadas = new List<Parcela>();
-
-            prazo.ParaCadaFaca(numeroDaParcela =>
+            
+            Assert.DoesNotThrow(() =>
             {
-                if (!parcelasEsperadas.Any())
-                    parcelasEsperadas.Add(new Parcela(0, 0, saldoDevedor));
-
-                var saldoDevedorDaParcelaPassada = saldoDevedor - (numeroDaParcela * amortizacao);
-                var saldoDevedorDaParcela = saldoDevedor - ((numeroDaParcela + 1) * amortizacao);
-                var juros = JurosCompostos.CalcularJuros(saldoDevedorDaParcelaPassada, taxaDeJuros, 1);
-                var parcela = new Parcela(juros.Arredondado(2), amortizacao.Arredondado(2), saldoDevedorDaParcela.Arredondado(2));
-
-                parcelasEsperadas.Add(parcela);
+                var parcelas = SistemaDeAmortizacaoConstante.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo);
+                Assert.AreEqual(parcelas.Last().SaldoDevedor, 0);
             });
+            
+        }
+
+        [Test, Description("Soma das amortizações não da o saldo devedor no SAC #13")]
+        public void Teste_do_bug_da_quitacao_de_saldo_devedor()
+        {
+            const decimal saldoDevedor = 1000;
+            const int prazo = 3;
+            const decimal taxaDeJuros = 0.02m;
 
             var parcelas = SistemaDeAmortizacaoConstante.CalcularParcelas(saldoDevedor, taxaDeJuros, prazo);
 
-            CollectionAssert.AreEqual(parcelasEsperadas, parcelas);
-            Assert.AreEqual(parcelas.Last().SaldoDevedor, 0);
+            Assert.AreEqual(saldoDevedor, parcelas.Sum(parcela => parcela.Amortizacao));
         }
     }
 }

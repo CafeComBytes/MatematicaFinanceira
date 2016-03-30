@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MatematicaFinanceira.Lib
 {
@@ -16,7 +17,14 @@ namespace MatematicaFinanceira.Lib
             {
                 var juros = JurosCompostos.CalcularJuros(saldoDevedorAtual, taxaDeJuros, prazo: 1);
                 saldoDevedorAtual -= amortizacaoAtravesDoPrazo;
+
+                var temQueCompensarDizimaPeriodica = numeroDaParcela == prazo - 1 && saldoDevedorAtual != 0;
+
+                if (temQueCompensarDizimaPeriodica)
+                    amortizacaoAtravesDoPrazo += 0.01m;
+
                 parcelas.Add(new Parcela(juros.Arredondado(2), amortizacaoAtravesDoPrazo.Arredondado(2), saldoDevedorAtual.Arredondado(2)));
+
             }
 
             return parcelas;
